@@ -1,0 +1,32 @@
+-- Tabel Pengguna / Admin
+CREATE TABLE users (
+    id INT PRIMARY KEY AUTOINCREMENT,
+    nama VARCHAR(100),
+    username VARCHAR(50) UNIQUE,
+    password VARCHAR(255),
+    role ENUM('admin', 'staff') DEFAULT 'staff'
+);
+
+-- Tabel Master Data Penduduk / Plafon Data
+CREATE TABLE penduduk (
+    nik VARCHAR(16) PRIMARY KEY,
+    nama_lengkap VARCHAR(100),
+    tempat_lahir VARCHAR(50),
+    tanggal_lahir DATE,
+    jenis_kelamin ENUM('L', 'P'),
+    alamat TEXT,
+    rt_rw VARCHAR(10),
+    status_perkawinan VARCHAR(20),
+    pekerjaan VARCHAR(50)
+);
+
+-- Tabel Arsip Surat
+CREATE TABLE surat (
+    id INT PRIMARY KEY AUTOINCREMENT,
+    nomor_surat VARCHAR(50) UNIQUE,
+    jenis_surat ENUM('surat_pindah', 'surat_keterangan', 'jual_beli_tanah'),
+    nik_pemohon VARCHAR(16),
+    tanggal_dibuat DATETIME DEFAULT CURRENT_TIMESTAMP,
+    detail_data JSON, -- Menyimpan data khusus (misal: harga tanah, alamat tujuan)
+    FOREIGN KEY (nik_pemohon) REFERENCES penduduk(nik) ON DELETE CASCADE
+);
