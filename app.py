@@ -1,10 +1,9 @@
-echo "# dataku-desa" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/saufiputra52-alt/dataku-desa.git
-git push -u origin main
-git remote add origin https://github.com/saufiputra52-alt/dataku-desa.git
-git branch -M main
-git push -u origin main
+Client / Laptop ]
+       │
+       ├──► [ UI Aplikasi Desktop ] (Form Input Data & Surat)
+       │         │
+       │         ├──► [ Database SQLite ] (Simpan data_ku.db di harddisk)
+       │         │
+       │         └──► [ Generator Dokumen ]
+       │                   ├──► Ekspor File .docx (Template Surat)
+       │                   └──► Ekspor File .pdf (Siap Cetak)
